@@ -15,7 +15,7 @@ python libraries: flask, pymongo, json, bson
 - "/templates": html page
 - "/static/js": javascript
 - "/static/css":css
-- "/static/img": Track images should be here. Please put the track images which Dongyun Han shared here
+- "/static/img": Track images should be here. Please put the track images which Dongyun Han shared
 
 Please check above folders and add your works.
 
