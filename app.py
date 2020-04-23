@@ -28,11 +28,27 @@ def dashboard_main():
 
 
 @app.route('/getAllFeatures', methods=['GET'])
-def test():
-    result = musicDBManager.getAllFeatures_billboard()
+def getAllFeatures_billboard():
+    # state is one of  "billboard" and "top50"
+    state = request.args.get("state", 0).lower()
+
+    if state == "billboard":
+        result = musicDBManager.getBillboard()
+    else:
+        result = musicDBManager.getTop50()
     # return json.result
     # return json.dumps(result[0])
     return dumps(result)
+
+
+@app.route('/getATrackImage', methods=['GET'])
+def test():
+    track = request.args.get("track", 0).lower()
+
+    trackImg_path = musicDBManager.getATrackImage(track)
+    # return json.result
+    # return json.dumps(result[0])
+    return trackImg_path
 
 
 if __name__ == '__main__':
