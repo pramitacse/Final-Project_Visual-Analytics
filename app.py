@@ -27,8 +27,8 @@ def dashboard_main():
     return render_template("main.html")
 
 
-@app.route('/getAllFeatures', methods=['GET'])
-def getAllFeatures_billboard():
+@app.route('/getMusic', methods=['GET'])
+def getAllMusic_billboard():
     # state is one of  "billboard" and "top50"
     state = request.args.get("state", 0).lower()
 
@@ -36,6 +36,23 @@ def getAllFeatures_billboard():
         result = musicDBManager.getBillboard()
     else:
         result = musicDBManager.getTop50()
+    # return json.result
+    # return json.dumps(result[0])
+    return dumps(result)
+
+
+@app.route('/getFeatureData', methods=['GET'])
+def getAllFeatures_billboard():
+    # state is one of  "billboard" and "top50"
+
+    feature = request.args.get("feature", 0).lower()
+    print(feature)
+
+    # if state == "billboard":
+    #     result = musicDBManager.getBillboard()
+    # else:
+    result = musicDBManager.getFeatureData(feature)
+
     # return json.result
     # return json.dumps(result[0])
     return dumps(result)

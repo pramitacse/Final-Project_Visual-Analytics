@@ -8,7 +8,7 @@ img_directory_path = "./static/img/"
 
 
 def getBillboard():
-    result = getAllFeatures_billboard()
+    result = getAllMusic_billboard()
     # img_result = getAllImages()
 
     billboard_data = []
@@ -21,7 +21,7 @@ def getBillboard():
 
 
 def getTop50():
-    result = getAllFeatures_top50()
+    result = getAllMusic_top50()
     # img_result = getAllImages()
 
     top50_data = []
@@ -33,7 +33,7 @@ def getTop50():
     return top50_data
 
 
-def getAllFeatures_billboard():
+def getAllMusic_billboard():
     # print(dataList)
 
     client = MongoClient(
@@ -45,7 +45,7 @@ def getAllFeatures_billboard():
     return isSuccess
 
 
-def getAllFeatures_top50():
+def getAllMusic_top50():
     # print(dataList)
 
     client = MongoClient(
@@ -57,7 +57,46 @@ def getAllFeatures_top50():
     return isSuccess
 
 
+def getFeatureData(feature):
+    billboard_feature = getFeatrue_billboard(feature)
+    top50_feature = getFeatrue_top50(feature)
+
+    # ////////
+    # need to add a column which are from billboard and which are from top50
+    # to draw later
+    for row in top50_feature:
+        print(row)
+        break
+
+    return "feature"
+
+
+def getFeatrue_top50(feature):
+    # print(dataList)
+
+    client = MongoClient(
+        "mongodb+srv://handy:ehddbs113@cluster0-siplm.mongodb.net/test?retryWrites=true&w=majority")
+    db = client.MusicDB
+    collection = db.top50MusicCollection
+
+    isSuccess = collection.find({}, {feature: 1})
+    return isSuccess
+
+
+def getFeatrue_billboard(feature):
+    # print(dataList)
+
+    client = MongoClient(
+        "mongodb+srv://handy:ehddbs113@cluster0-siplm.mongodb.net/test?retryWrites=true&w=majority")
+    db = client.MusicDB
+    collection = db.billboardMusicCollection
+
+    isSuccess = collection.find({}, {feature: 1})
+    return isSuccess
+
 # ////////////////////////////////////////
+
+
 def getTrackImages(track):
     return "image"
 
