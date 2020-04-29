@@ -57,38 +57,55 @@
       <div class="row">
         <div class="col-md-6">
           multiple histogram part
-          <div id="music_tempo"></div>
-          <!-- <div id="music_tempo"></div>
-          <div id="music_tempo"></div>
-          <div id="music_tempo"></div>
-          <div id="music_tempo"></div>
-          <div id="music_tempo"></div>
-          <div id="music_tempo"></div>
-          <div id="music_tempo"></div>
-          <div id="music_tempo"></div> -->
+          <div id="multi-histogram">
+            <div id="music_tempo"></div>
+            <!-- <div id="music_tempo"></div>
+            <div id="music_tempo"></div>
+            <div id="music_tempo"></div>
+            <div id="music_tempo"></div>
+            <div id="music_tempo"></div>
+            <div id="music_tempo"></div>
+            <div id="music_tempo"></div>
+            <div id="music_tempo"></div> -->
+          </div>
         </div>
         <div class="col-md-6">
-          <div class="row">word cloud | List viewp</div>
+            <div class="container">
+          <div class="row">
+              <div class="col-md-6" id="wordCloud-billboard">
+                  </div>
+                <div class="col-md-6" id="listView-billboard">
+                    <table id="table-billboard">
+                            <tr>
+                                <th>Image</th>
+                                <th>Track</th>
+                                <th>Artist</th>
+                                <th>Year</th>
+                            </tr>
+                    </table>
+                </div> 
+            </div>
           <div class="row">
             word cloud | List viewp
           </div>
         </div>
       </div>
       <hr />
-      <footer>
-        <div class="row">
-          <div class="col-md-6">
-            <p>Vis 2020 final project</p>
-          </div>
-          <div class="col-md-6 text-md-right">
-            Team 2:
-            <!-- <a href="#" class="text-dark">Terms of Use</a>
-            <span class="text-muted mx-2">|</span>
-            <a href="#" class="text-dark">Privacy Policy</a> -->
-          </div>
-        </div>
-      </footer>
+      
     </div>
+    <footer>
+            <div class="row">
+              <div class="col-md-6">
+                <p>Vis 2020 final project</p>
+              </div>
+              <div class="col-md-6 text-md-right">
+                Team 2:
+                <!-- <a href="#" class="text-dark">Terms of Use</a>
+                <span class="text-muted mx-2">|</span>
+                <a href="#" class="text-dark">Privacy Policy</a> -->
+              </div>
+            </div>
+          </footer>
   </body>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -96,6 +113,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/d3-moveto@0.0.3/build/d3-moveto.min.js"></script>
   <script src="https://unpkg.com/jeezy@1.12.13/lib/jeezy.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
 
   <script src="./static/js/beeswarmPlot.js"></script>
   <script src="./static/js/listview.js"></script>

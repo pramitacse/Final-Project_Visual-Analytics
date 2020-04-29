@@ -97,6 +97,6 @@ $.ajax({
     // }, 8000);
   },
   error: function() {
-    alert("error");
+    alert("error: beeswarm");
   }
 });

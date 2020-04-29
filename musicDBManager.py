@@ -61,14 +61,23 @@ def getFeatureData(feature):
     billboard_feature = getFeatrue_billboard(feature)
     top50_feature = getFeatrue_top50(feature)
 
+    top50 = []
+    billboard = []
     # ////////
     # need to add a column which are from billboard and which are from top50
     # to draw later
     for row in top50_feature:
-        print(row)
-        break
+        # print(row)
+        # row["source"] = "top50"
+        top50.append(row)
 
-    return "feature"
+    for row in billboard_feature:
+        # row["source"] = "billboard"
+        billboard.append(row)
+
+    feature_data = [{"top50": top50, "billboard": billboard}]
+
+    return feature_data
 
 
 def getFeatrue_top50(feature):
@@ -79,7 +88,7 @@ def getFeatrue_top50(feature):
     db = client.MusicDB
     collection = db.top50MusicCollection
 
-    isSuccess = collection.find({}, {feature: 1})
+    isSuccess = collection.find({}, {"_id": 0, feature: 1})
     return isSuccess
 
 
@@ -91,7 +100,7 @@ def getFeatrue_billboard(feature):
     db = client.MusicDB
     collection = db.billboardMusicCollection
 
-    isSuccess = collection.find({}, {feature: 1})
+    isSuccess = collection.find({}, {"_id":  0, feature: 1})
     return isSuccess
 
 # ////////////////////////////////////////

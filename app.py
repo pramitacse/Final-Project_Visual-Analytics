@@ -28,7 +28,7 @@ def dashboard_main():
 
 
 @app.route('/getMusic', methods=['GET'])
-def getAllMusic_billboard():
+def getAllMusic():
     # state is one of  "billboard" and "top50"
     state = request.args.get("state", 0).lower()
 
@@ -46,7 +46,7 @@ def getAllFeatures_billboard():
     # state is one of  "billboard" and "top50"
 
     feature = request.args.get("feature", 0).lower()
-    print(feature)
+    # print(feature)
 
     # if state == "billboard":
     #     result = musicDBManager.getBillboard()
