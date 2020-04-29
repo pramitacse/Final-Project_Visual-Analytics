@@ -3,6 +3,7 @@ import json
 from bson.json_util import loads, dumps
 import musicDBManager
 
+
 # To connect 10.20.18.124 server 's mongoDB
 # From local
 # MONGO_HOST = "10.20.18.124"
@@ -46,26 +47,28 @@ def getAllFeatures_billboard():
     # state is one of  "billboard" and "top50"
 
     feature = request.args.get("feature", 0).lower()
-    # print(feature)
 
-    # if state == "billboard":
-    #     result = musicDBManager.getBillboard()
-    # else:
     result = musicDBManager.getFeatureData(feature)
 
-    # return json.result
-    # return json.dumps(result[0])
     return dumps(result)
 
 
 @app.route('/getATrackImage', methods=['GET'])
-def test():
+def getATrackImage():
     track = request.args.get("track", 0).lower()
 
     trackImg_path = musicDBManager.getATrackImage(track)
-    # return json.result
-    # return json.dumps(result[0])
+
     return trackImg_path
+
+
+@app.route('/getKeywords', methods=['GET'])
+def getKeywords():
+    top50_keywords = musicDBManager.getKeywords_top50()
+    billboard_keywords = musicDBManager.getKeywords_billboard()
+
+    result = [{"top50": top50_keywords, "billboard": billboard_keywords}]
+    return dumps(result)
 
 
 if __name__ == '__main__':

@@ -3,6 +3,7 @@ import os
 import json
 import numpy
 import pandas as pd
+import myNLProcessing
 
 img_directory_path = "./static/img/"
 
@@ -103,6 +104,54 @@ def getFeatrue_billboard(feature):
     isSuccess = collection.find({}, {"_id":  0, feature: 1})
     return isSuccess
 
+
+def getKeywords():
+    keywords_billboard = getKeywords_billboard()
+    keywords_top50 = getKeywords_top50()
+
+    # top50 = []
+    # billboard = []
+    # # ////////
+    # # need to add a column which are from billboard and which are from top50
+    # # to draw later
+    # for row in top50_feature:
+    #     # print(row)
+    #     # row["source"] = "top50"
+    #     top50.append(row)
+
+    # for row in billboard_feature:
+    #     # row["source"] = "billboard"
+    #     billboard.append(row)
+
+    keywrods_data = [{"top50": keywords_top50,
+                      "billboard": keywords_billboard}]
+
+    return keywrods_data
+
+
+def getKeywords_billboard():
+    client = MongoClient(
+        "mongodb+srv://handy:ehddbs113@cluster0-siplm.mongodb.net/test?retryWrites=true&w=majority")
+    db = client.MusicDB
+    collection = db.billboardMusicCollection
+
+    isSuccess = collection.find({}, {"_id":  0, "lyrics": 1})
+    billboard_keywords = myNLProcessing.wordCloudDataProcessing_TFIDF(
+        isSuccess)
+
+    return billboard_keywords
+
+
+def getKeywords_top50():
+    client = MongoClient(
+        "mongodb+srv://handy:ehddbs113@cluster0-siplm.mongodb.net/test?retryWrites=true&w=majority")
+    db = client.MusicDB
+    collection = db.top50MusicCollection
+
+    isSuccess = collection.find({}, {"_id":  0, "lyrics": 1})
+    top50_keywords = myNLProcessing.wordCloudDataProcessing_TFIDF(isSuccess)
+
+    return top50_keywords
 # ////////////////////////////////////////
 
 
