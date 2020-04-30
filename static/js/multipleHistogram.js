@@ -117,7 +117,7 @@ $.ajax({
             .style("opacity", 1);
     },
     error: function(err) {
-        alert("error: music tempo");
+        alert("error: music dancebility");
     }
 });
 
@@ -352,7 +352,7 @@ d3.min(billboard_feature, d => d.acousticness)
             .style("opacity", 1);
     },
     error: function(err) {
-        alert("error: music tempo");
+        alert("error: music acousticness");
     }
 });
 
@@ -587,7 +587,7 @@ $.ajax({
             .style("opacity", 1);
     },
     error: function(err) {
-        alert("error: music tempo");
+        alert("error: music loudness");
     }
 });
 ////************************   music_instrumentalness   ************************//////
@@ -820,7 +820,7 @@ $.ajax({
             .style("opacity", 1);
     },
     error: function(err) {
-        alert("error: music tempo");
+        alert("error: music liveness");
     }
 });
 ////************************   music_valence   ************************//////
