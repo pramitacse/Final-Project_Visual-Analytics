@@ -1,0 +1,6 @@
+#main {
+    width: 350px;
+    height: 350px;
+    /*border: 1px solid #c3c3c3;*/
+    display: flex;
+}
