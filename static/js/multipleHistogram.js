@@ -956,7 +956,7 @@ $.ajax({
     url: "/getFeatureData",
     type: "GET",
     data: {
-        feature: "temp"
+        feature: "tempo"
         // "temp" indicate the tempo
     },
     success: function(data) {
@@ -966,23 +966,23 @@ $.ajax({
         billboard_feature = data["billboard"];
 
         top50_feature.forEach(d => {
-            d.temp = +d.temp;
+            d.tempo = +d.tempo;
         });
 
         billboard_feature.forEach(d => {
-            d.temp = +d.temp;
+            d.tempo = +d.tempo;
         });
 
         let x = d3.scaleLinear().range([0, histo_width]);
 
         x.domain([
             Math.min(
-                d3.min(top50_feature, d => d.temp),
-                d3.min(billboard_feature, d => d.temp)
+                d3.min(top50_feature, d => d.tempo),
+                d3.min(billboard_feature, d => d.tempo)
             ),
             Math.max(
-                d3.max(top50_feature, d => d.temp),
-                d3.max(billboard_feature, d => d.temp)
+                d3.max(top50_feature, d => d.tempo),
+                d3.max(billboard_feature, d => d.tempo)
             )
         ]);
 
@@ -994,7 +994,7 @@ $.ajax({
         let histogram = d3
             .histogram()
             .value(function(d) {
-                return d.temp;
+                return d.tempo;
             }) // I need to give the vector of value
             .domain(x.domain()) // then the domain of the graphic
             .thresholds(x.ticks(30)); // then the numbers of bins
