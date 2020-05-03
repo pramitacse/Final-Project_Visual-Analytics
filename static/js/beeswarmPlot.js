@@ -6,7 +6,7 @@ let width = d3
     .node()
     .getBoundingClientRect().width,
   height = 250,
-  radius = 5;
+  radius = 3;
 
 let svg = d3
   .select("#swarm-wrapper")
