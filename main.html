@@ -19,7 +19,7 @@
   </head>
   <!-- class="navbar navbar-expand-md mb-1 navbar-dark bg-primary" -->
 
-  <body>
+  <body onload="getTop50MusicListView(); getBillBoardMusic()">
     <nav
       class="navbar navbar-dark py-0 bg-primary navbar-expand-lg py-md-1"
       style="opacity:0.9"
@@ -83,10 +83,11 @@
           <input
                   class="form-control mr-sm-2"
                   type="search"
+                  id="search"
                   placeholder="Search"
                   aria-label="Search"
           />
-          <button class="btn btn-primary my-2 my-sm-0" type="submit">
+          <button class="btn btn-primary my-2 my-sm-0" id="searchBtn" type="submit">
             Search
           </button>
         </form>
@@ -189,7 +190,7 @@
           class="col-md-6 text-md-right"
           style="color: white ;margin: auto 0 auto 0"
         >
-          Presented by Team 2: DY Han, Daniel Machooka, Fikirte Demmese, Pramita Sree Muhuri
+          Presented by Team 2: DY Han, Pramita Sree Muhuri
           <!-- <a href="#" class="text-dark">Terms of Use</a>
                           <span class="text-muted mx-2">|</span>
                           <a href="#" class="text-dark">Privacy Policy</a> -->
@@ -210,4 +211,11 @@
   <script src="./static/js/listview.js"></script>
   <script src="./static/js/multipleHistogram.js"></script>
   <script src="./static/js/wordCloud.js"></script>
+  <script>
+    document.getElementById("searchBtn").addEventListener("click", function() {
+      var searchedText = document.getElementById("search").value ;
+      alert("Hello World! "+searchedText);
+    });
+  </script>
+
 </html>
