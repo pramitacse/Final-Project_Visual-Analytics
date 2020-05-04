@@ -1,0 +1,39 @@
+/* table {
+  table-layout: fixed;
+} */
+thead,
+tbody {
+  display: block;
+}
+
+tbody {
+  height: 180px; /* Just for the demo          */
+  overflow-y: auto; /* Trigger vertical scroll    */
+  overflow-x: hidden; /* Hide the horizontal scroll */
+}
+
+/* th, */
+td {
+  border-bottom: 1px solid #bbb;
+  padding: 2px 8px 0;
+  text-align: left;
+  font-size: 13px;
+}
+
+tbody::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+tbody::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+tbody::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+
+tbody::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, 0.5);
+}

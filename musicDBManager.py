@@ -7,6 +7,8 @@ import myNLProcessing
 
 img_directory_path = "./static/img/"
 
+RANKTOP20 = [str(i) for i in range(1, 21)]
+
 
 def getBillboard():
     result = getAllMusic_billboard()
@@ -42,7 +44,8 @@ def getAllMusic_billboard():
     db = client.MusicDB
     collection = db.billboardMusicCollection
 
-    isSuccess = collection.find({}, {"_id": 0, "lyrics": 0, "image_url": 0})
+    isSuccess = collection.find({"rank": {"$in": RANKTOP20}}, {
+                                "_id": 0, "lyrics": 0, "image_url": 0}).sort("releaseDate", -1)
     return isSuccess
 
 
@@ -54,7 +57,8 @@ def getAllMusic_top50():
     db = client.MusicDB
     collection = db.top50MusicCollection
 
-    isSuccess = collection.find({}, {"_id": 0, "lyrics": 0, "image_url": 0})
+    isSuccess = collection.find(
+        {}, {"_id": 0, "lyrics": 0, "image_url": 0}).sort("releaseDate")
     return isSuccess
 
 
@@ -68,7 +72,6 @@ def getFeatureData(feature):
     # need to add a column which are from billboard and which are from top50
     # to draw later
     for row in top50_feature:
-        # print(row)
         # row["source"] = "top50"
         top50.append(row)
 
@@ -82,14 +85,13 @@ def getFeatureData(feature):
 
 
 def getFeatrue_top50(feature):
-    # print(dataList)
-
     client = MongoClient(
         "mongodb+srv://handy:ehddbs113@cluster0-siplm.mongodb.net/test?retryWrites=true&w=majority")
     db = client.MusicDB
     collection = db.top50MusicCollection
 
     isSuccess = collection.find({}, {"_id": 0, feature: 1})
+
     return isSuccess
 
 
@@ -101,7 +103,8 @@ def getFeatrue_billboard(feature):
     db = client.MusicDB
     collection = db.billboardMusicCollection
 
-    isSuccess = collection.find({}, {"_id":  0, feature: 1})
+    isSuccess = collection.find({"rank": {"$in": RANKTOP20}}, {
+                                "_id":  0, feature: 1})
     return isSuccess
 
 
@@ -135,7 +138,8 @@ def getKeywords_billboard():
     db = client.MusicDB
     collection = db.billboardMusicCollection
 
-    isSuccess = collection.find({}, {"_id":  0, "lyrics": 1})
+    isSuccess = collection.find({"rank": {"$in": RANKTOP20}}, {
+                                "_id":  0, "preprocessed_lyrice": 1})
     billboard_keywords = myNLProcessing.wordCloudDataProcessing_TFIDF(
         isSuccess)
 
@@ -148,7 +152,7 @@ def getKeywords_top50():
     db = client.MusicDB
     collection = db.top50MusicCollection
 
-    isSuccess = collection.find({}, {"_id":  0, "lyrics": 1})
+    isSuccess = collection.find({}, {"_id":  0, "preprocessed_lyrice": 1})
     top50_keywords = myNLProcessing.wordCloudDataProcessing_TFIDF(isSuccess)
 
     return top50_keywords

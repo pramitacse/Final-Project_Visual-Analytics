@@ -64,10 +64,16 @@ def getATrackImage():
 
 @app.route('/getKeywords', methods=['GET'])
 def getKeywords():
-    top50_keywords = musicDBManager.getKeywords_top50()
-    billboard_keywords = musicDBManager.getKeywords_billboard()
 
-    result = [{"top50": top50_keywords, "billboard": billboard_keywords}]
+    state = request.args.get("state", 0).lower()
+    result = None
+    if state == "billboard":
+        # timeRange = request.args.get("state", 0)
+        result = musicDBManager.getKeywords_billboard()
+    else:
+        result = musicDBManager.getKeywords_top50()
+
+    result = [{"keywords": result}]
     return dumps(result)
 
 

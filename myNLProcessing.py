@@ -100,21 +100,21 @@ def textPreprocessing(text):
 #     word_tokens = tokenizer.tokenize(text)
     word_tokens = TextBlob(text).words
 
-    preprocessed_word = []
+    # preprocessed_word = []
 
-    for word in word_tokens:
-        word = unidecode.unidecode(word)
-#         word = Word(word).lemmatize()
+#     for word in word_tokens:
+#         word = unidecode.unidecode(word)
+# #         word = Word(word).lemmatize()
 
-        if word not in stop_words and word not in stop_words2 and len(word) != 1:
-            word = word
-            word = Word(word).lemmatize()
+#         # if word not in stop_words and word not in stop_words2 and len(word) != 1:
+#             word = word
+#             # word = Word(word).lemmatize()
 
-            preprocessed_word.append(word)
+#             preprocessed_word.append(word)
 
 #         preprocessed_word.append(word.singularize())
 
-    result = " ".join(preprocessed_word)
+    result = " ".join(word_tokens)
 
     return result
 
@@ -141,9 +141,9 @@ def wordCloudDataProcessing_TFIDF(data):
     totalCorpus = ""
 
     for item in data:
-        corpus.append(textPreprocessing(item["lyrics"]))
+        corpus.append(textPreprocessing(item["preprocessed_lyrice"]))
         totalCorpus = totalCorpus + "/n" + \
-            textPreprocessing(item["lyrics"])
+            textPreprocessing(item["preprocessed_lyrice"])
 
     # print(totalCorpus)
 
