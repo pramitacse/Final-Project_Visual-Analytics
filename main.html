@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Final project</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/main.css" />
+    <link rel="stylesheet" href="./static/css/beeswarmPlot.css" />
+    <link rel="stylesheet" href="./static/css/listview.css" />
+    <link rel="stylesheet" href="./static/css/multipleHistogram.css" />
+    <link rel="stylesheet" href="./static/css/wordCloud.css" />
+  </head>
+  <!-- class="navbar navbar-expand-md mb-1 navbar-dark bg-primary" -->
+
+  <body>
+    <nav
+      class="navbar navbar-dark py-0 bg-primary navbar-expand-lg py-md-1"
+      style="opacity:0.9"
+    >
+      <div class="container-fluid">
+        <a
+          href="#"
+          class="navbar-brand mr-3"
+          style="font-size:25px; font-weight: bold"
+          >MuRVIS</a
+        >
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav">
+            <!-- <a href="#" class="nav-item nav-link active">Home</a>
+            <a href="#" class="nav-item nav-link">Services</a>
+            <a href="#" class="nav-item nav-link">About</a>
+            <a href="#" class="nav-item nav-link">Contact</a> -->
+          </div>
+          <div class="navbar-nav ml-auto mr-3">
+            <input
+              type="radio"
+              id="track"
+              name="search-option"
+              checked="true"
+              style="margin: auto 0 auto 0"
+            />
+            <label for="track" style="margin: auto 0 auto 0; color:white"
+              >Track</label
+            >
+            <input
+              type="radio"
+              id="artist"
+              name="search-option"
+              style="margin: auto 0 auto 0"
+              class="ml-2"
+            />
+            <label for="artist" style="margin: auto 0 auto 0; color:white"
+              >Artist</label
+            >
+            <input
+              type="radio"
+              id="year"
+              name="search-option"
+              style="margin: auto 0 auto 0"
+              class="ml-2"
+            />
+            <label for="year" style="margin: auto 0 auto 0; color:white"
+              >Year</label
+            >
+          </div>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <div>
+      <div
+        id="upper-container"
+        class="row"
+        style="margin: 0 0 0 0 !important; padding: 0 0 0 0 !important"
+      >
+        <div id="swarm-wrapper" class="col-md-12" style="padding:0 0 0 0"></div>
+      </div>
+      <div id="bottom-container" class="row pt-3">
+        <div id="multi-histogram" class="col-md-6">
+          <div class="row ml-2">
+            <div id="music_valence" class="col-md-4 "></div>
+            <div id="music_tempo" class="col-md-4"></div>
+            <div id="music_duration_ms" class="col-md-4"></div>
+          </div>
+          <div class="row ml-2">
+            <div id="music_dancebility" class="col-md-4"></div>
+            <div id="music_energy" class="col-md-4"></div>
+            <div id="music_acousticness" class="col-md-4"></div>
+          </div>
+          <div class="row ml-2">
+            <div id="music_speechiness" class="col-md-4"></div>
+            <div id="music_loudness" class="col-md-4"></div>
+            <!-- <div id="music_instrumentalness">instrumental</div> -->
+            <div id="music_liveness" class="col-md-4"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row mr-1 ml-2" style="margin-bottom:40px">
+            <div class="col-md-6" id="wordCloud-billboard"></div>
+            <div class="col-md-6" id="listView-billboard">
+              <table id="table-billboard">
+                <thead
+                  class="bg-primary"
+                  style="opacity: 0.8; border-radius: 5px;"
+                >
+                  <tr>
+                    <th style="width:150px; text-align: center; color:white ">
+                      Year
+                    </th>
+                    <th style="width:150px; text-align: center; color:white ">
+                      Track
+                    </th>
+                    <th style="width:150px; text-align: center; color:white">
+                      Artist
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="table-content-billboard"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row mr-1 ml-2">
+            <div class="col-md-6" id="wordCloud-top50"></div>
+            <div class="col-md-6" id="listView-top50">
+              <table id="table-top50">
+                <thead
+                  class="bg-primary"
+                  style="opacity: 0.8; border-radius: 5px;"
+                >
+                  <tr>
+                    <th style="width:150px; text-align: center; color:white ">
+                      Year
+                    </th>
+                    <th style="width:150px; text-align:center; color:white">
+                      Track
+                    </th>
+                    <th style="width:150px; text-align:center; color:white">
+                      Artist
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="table-content-top50"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="py-0 bg-primary navbar-expand-lg py-md-0"
+      style="opacity: 0.8"
+    >
+      <div class="row">
+        <div class="col-md-5">
+          <p
+            class="ml-4"
+            style="color: white; font-size:15px; margin: auto 0 auto 0"
+          >
+            Spring Semester 2020 Visual Analytics Course Final Project
+          </p>
+        </div>
+        <div
+          class="col-md-6 text-md-right"
+          style="color: white ;margin: auto 0 auto 0"
+        >
+          Presented by Team 2: DY Han, Daniel Machooka, Fikirte Demmese, Pramita Sree Muhuri
+          <!-- <a href="#" class="text-dark">Terms of Use</a>
+                          <span class="text-muted mx-2">|</span>
+                          <a href="#" class="text-dark">Privacy Policy</a> -->
+        </div>
+      </div>
+    </footer>
+  </body>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/d3-moveto@0.0.3/build/d3-moveto.min.js"></script>
+  <script src="https://unpkg.com/jeezy@1.12.13/lib/jeezy.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+
+  <script src="./static/js/beeswarmPlot.js"></script>
+  <script src="./static/js/listview.js"></script>
+  <script src="./static/js/multipleHistogram.js"></script>
+  <script src="./static/js/wordCloud.js"></script>
+</html>
