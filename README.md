@@ -10,7 +10,7 @@ python libraries: flask, pymongo, json, bson
 - open the webpage "localhost:5000"
 
 ## Frontend Part
-- Shows Beeswarm , Histogram and WordCloud and listView
+- Shows Beeswarm Plot , Mulitple Histogram plot , WordCloud and list View of all musics
 
 -Users can search their prefference based on: Track,Artist and Year
 
