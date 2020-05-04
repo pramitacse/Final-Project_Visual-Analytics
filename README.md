@@ -10,9 +10,10 @@ python libraries: flask, pymongo, json, bson
 - open the webpage "localhost:5000"
 
 ## Frontend Part
--Shows Beeswarm , Histogram and WordCloud and listView
+- Shows Beeswarm , Histogram and WordCloud and listView
 -Users can search their prefference based on: Track,Artist and Year
 -
+
 #### description about folders (location)
 - "/templates": html page
 - "/static/js": javascript
