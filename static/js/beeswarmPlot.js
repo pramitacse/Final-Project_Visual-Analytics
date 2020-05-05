@@ -102,6 +102,7 @@ $.ajax({
       .attr("class", "circ")
       .attr("r", d => {
         let tempR = 10 / Math.log(d.rank + 1);
+
         if (tempR < 3) {
           return 4;
         }
@@ -130,9 +131,11 @@ $.ajax({
       })
       .style("fill", d => {
         let tempR = 10 / Math.log(d.rank + 1);
+
         if (tempR < 4) {
           return;
         }
+
         return "url(#" + d.track + "-icon)";
       })
       .style("fill-opacity", d => {
