@@ -261,7 +261,8 @@ $.ajax({
         let tooltip_content =
           '<div id="swarm-card" class="card card-shadow mb-0 bg-primary " style="border-radius:10px; width:auto; padding: 5px;">' +
           '<div id="swarm-card-track" style="color:white; font-weight: bold; font-size: 15px">' +
-          capitalize(d.track.split("_").join(" ")) +
+         d.rank + "." +
+            capitalize(d.track.split("_").join(" ")) +
           "</div>" +
           '<div id="swarm-card-artist" class="pt-1" style="color: white">' +
           capitalize(d.artist.replace("/and/", "&")) +
