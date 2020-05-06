@@ -19,7 +19,7 @@
   </head>
   <!-- class="navbar navbar-expand-md mb-1 navbar-dark bg-primary" -->
 
-  <body onload="getTop50MusicListView(); getBillBoardMusic()">
+  <body>
     <nav
       class="navbar navbar-dark py-0 bg-primary navbar-expand-lg py-md-1"
       style="opacity:0.9"
@@ -81,13 +81,12 @@
         </div>
         <form class="form-inline my-2 my-lg-0">
           <input
-                  class="form-control mr-sm-2"
-                  type="search"
-                  id="search"
-                  placeholder="Search"
-                  aria-label="Search"
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
           />
-          <button class="btn btn-primary my-2 my-sm-0" id="searchBtn" type="submit">
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">
             Search
           </button>
         </form>
@@ -100,7 +99,6 @@
         style="margin: 0 0 0 0 !important; padding: 0 0 0 0 !important"
       >
         <div id="swarm-wrapper" class="col-md-12" style="padding:0 0 0 0"></div>
-
       </div>
       <div id="bottom-container" class="row pt-3">
         <div id="multi-histogram" class="col-md-6">
@@ -121,23 +119,23 @@
             <div id="music_liveness" class="col-md-4"></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="caret-color: #ff7b25">
           <div class="row mr-1 ml-2" style="margin-bottom:40px">
-            <div class="col-md-6" id="wordCloud-billboard"></div>
-            <div class="col-md-6" id="listView-billboard">
+            <div class="col-md-6" id="wordCloud-billboard" style="background:fuchsia "></div>
+            <div class="col-md-6" id="listView-billboard" style="background-color: yellow">
               <table id="table-billboard">
                 <thead
                   class="bg-primary"
-                  style="opacity: 0.8; border-radius: 5px;"
+                  style="opacity: 0.8; border-radius: 5px;animation: alternate-reverse;marquee-speed: fast;"
                 >
                   <tr>
                     <th style="width:150px; text-align: center; color:white ">
                       Year
                     </th>
-                    <th style="width:150px; text-align: center; color:white ">
+                    <th style="width:150px; text-align: center; color:saddlebrown ">
                       Track
                     </th>
-                    <th style="width:150px; text-align: center; color:white">
+                    <th style="width:150px; text-align: center; color:lightseagreen">
                       Artist
                     </th>
                   </tr>
@@ -147,26 +145,26 @@
             </div>
           </div>
           <div class="row mr-1 ml-2">
-            <div class="col-md-6" id="wordCloud-top50"></div>
-            <div class="col-md-6" id="listView-top50">
+            <div class="col-md-6" id="wordCloud-top50" draggable="true" style="background: cyan"></div>
+            <div class="col-md-6" id="listView-top50" onfocus="Animation" style="background-color: crimson">
               <table id="table-top50">
                 <thead
                   class="bg-primary"
                   style="opacity: 0.8; border-radius: 5px;"
                 >
                   <tr>
-                    <th style="width:150px; text-align: center; color:green ">
+                    <th style="width:150px; text-align: center; color:coral ">
                       Year
                     </th>
-                    <th style="width:150px; text-align:center; color:green">
+                    <th style="width:150px; text-align:center; color:navajowhite">
                       Track
                     </th>
-                    <th style="width:150px; text-align:center; color:green">
+                    <th style="width:150px; text-align:center; color:hotpink">
                       Artist
                     </th>
                   </tr>
                 </thead>
-                <tbody id="table-content-top50"></tbody>
+                <tbody id="table-content-top50" style="animation-play-state: running"></tbody>
               </table>
             </div>
           </div>
@@ -174,28 +172,29 @@
       </div>
     </div>
     <footer
-      class="py-0 bg-primary navbar-expand-lg py-md-0"
-      style="opacity: 0.9"
+      class="py-0 bg-primary navbar-expand-lg py-md-0" draggable="true"
+      style="opacity: 0.8"
     >
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5" style="caret-color: #d64161">
           <p
             class="ml-4"
-            style="color: white; font-size:15px; margin: auto 0 auto 0"
+            style="color: cyan; font-size:15px; margin: auto 0 auto 0"
           >
             Spring Semester 2020 Visual Analytics Course Final Project
           </p>
         </div>
         <div
           class="col-md-6 text-md-right"
-          style="color: white ;margin: auto 0 auto 0"
+          style="color:yellow;margin: auto 0 auto 0" onfocus="AnimationEffect"
         >
-          Presented by Team 2: DY Han, Pramita Sree Muhuri ,Daniel Machooka
+          Presented by Team 2: DY Han,Daniel machooka,Firkirte ayalke,Pramita muhuri 
           <!-- <a href="#" class="text-dark">Terms of Use</a>
                           <span class="text-muted mx-2">|</span>
                           <a href="#" class="text-dark">Privacy Policy</a> -->
         </div>
       </div>
+
     </footer>
   </body>
 
@@ -206,16 +205,9 @@
   <script src="https://unpkg.com/d3-moveto@0.0.3/build/d3-moveto.min.js"></script>
   <script src="https://unpkg.com/jeezy@1.12.13/lib/jeezy.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
-
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
   <script src="./static/js/beeswarmPlot.js"></script>
   <script src="./static/js/listview.js"></script>
   <script src="./static/js/multipleHistogram.js"></script>
   <script src="./static/js/wordCloud.js"></script>
-  <script>
-    document.getElementById("searchBtn").addEventListener("click", function() {
-      var searchedText = document.getElementById("search").value ;
-      alert("Hello World! "+searchedText);
-    });
-  </script>
-
 </html>
