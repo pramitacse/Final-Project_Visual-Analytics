@@ -222,6 +222,7 @@ function drawMusicDancebilityHistogram(startDate = "1965", endDate = "2016") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
             // console.log(d3.select(this).attr("isClick"));
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("dancebility")) {
               tempList = filteredMusicCollection.get("dancebility");
@@ -432,6 +433,7 @@ function drawMusicEnergyilityHistogram(startDate = "1965", endDate = "2016") {
           if (isClick == "false") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("energy")) {
               tempList = filteredMusicCollection.get("energy");
@@ -639,6 +641,7 @@ function drawMusicAcousticnessHistogram(startDate = "1965", endDate = "2016") {
           if (isClick == "false") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("acousticness")) {
               tempList = filteredMusicCollection.get("acousticness");
@@ -848,6 +851,7 @@ function drawMusicSpeechinessHistogram(startDate = "1965", endDate = "2016") {
           if (isClick == "false") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("speechiness")) {
               tempList = filteredMusicCollection.get("speechiness");
@@ -1055,6 +1059,7 @@ function drawMusicLoudnessHistogram(startDate = "1965", endDate = "2016") {
           if (isClick == "false") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("loudness")) {
               tempList = filteredMusicCollection.get("loudness");
@@ -1428,6 +1433,7 @@ function drawMusicLivenessHistogram(startDate = "1965", endDate = "2016") {
           if (isClick == "false") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("liveness")) {
               tempList = filteredMusicCollection.get("liveness");
@@ -1638,6 +1644,7 @@ function drawMusicValenceHistogram(startDate = "1965", endDate = "2016") {
           if (isClick == "false") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("valence")) {
               tempList = filteredMusicCollection.get("valence");
@@ -1849,6 +1856,7 @@ function drawMusicTempoHistogram(startDate = "1965", endDate = "2016") {
           if (isClick == "false") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("tempo")) {
               tempList = filteredMusicCollection.get("tempo");
@@ -2058,6 +2066,7 @@ function drawMusicDurationHistogram(startDate = "1965", endDate = "2016") {
           if (isClick == "false") {
             d3.select(this).attr("isClick", "true");
             d3.select(this).style("fill", "red");
+            isOneHistoClicked = true;
 
             if (filteredMusicCollection.has("duration_ms")) {
               tempList = filteredMusicCollection.get("duration_ms");

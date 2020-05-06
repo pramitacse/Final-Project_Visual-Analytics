@@ -229,6 +229,7 @@ $.ajax({
       .attr("id", d => "circ-" + d.track)
       .attr("r", d => {
         let tempR = 10 / Math.log(d.rank + 1);
+        // let tempR = 10 / d.rank;
 
         if (tempR < 3) {
           return 3;
@@ -250,17 +251,13 @@ $.ajax({
         );
       })
       .on("mouseover", function(d) {
-        d3.selectAll(".circ").sort(function(a, b) {
-          //   console.log(a.track);
-          // select the parent and sort the path's
-          if (d.track == a.track) return 1;
-          // a is not the hovered element, send "a" to the back
-          else return -1; // a is the hovered element, bring "a" to the front
-        });
+        // if()
 
         let tooltip_content =
           '<div id="swarm-card" class="card card-shadow mb-0 bg-primary " style="border-radius:10px; width:auto; padding: 5px;">' +
           '<div id="swarm-card-track" style="color:white; font-weight: bold; font-size: 15px">' +
+          d.rank +
+          ". " +
           capitalize(d.track.split("_").join(" ")) +
           "</div>" +
           '<div id="swarm-card-artist" class="pt-1" style="color: white">' +
@@ -278,6 +275,16 @@ $.ajax({
           .style("opacity", 0.9)
           .style("left", d3.event.pageX + "px")
           .style("top", d3.event.pageY - 28 + "px");
+
+        if (OneHistoClicked) return;
+
+        d3.selectAll(".circ").sort(function(a, b) {
+          //   console.log(a.track);
+          // select the parent and sort the path's
+          if (d.track == a.track) return 1;
+          // a is not the hovered element, send "a" to the back
+          else return -1; // a is the hovered element, bring "a" to the front
+        });
 
         let circ = d3
           .select(this)
@@ -369,6 +376,8 @@ $.ajax({
           .transition()
           .duration(200)
           .style("opacity", 0);
+
+        if (OneHistoClicked) return;
 
         let shouldUpdate = false;
         let isHistoClick = false;

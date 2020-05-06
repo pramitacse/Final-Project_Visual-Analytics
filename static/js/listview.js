@@ -1,7 +1,7 @@
 // let originalMusicList_billboard = "";
 let isInit = true;
 let originalMusicList_billboard = [];
-
+let isOneHistoClicked = false;
 // let filteredMusicList_billboard = "";
 
 const capitalize = s => {
@@ -432,6 +432,10 @@ function resetBillboardList() {
             return tempR;
           });
 
+        if (!isHistoClick) {
+          isOneHistoClicked = false;
+        }
+
         if (shouldUpdate && !isHistoClick)
           d3.select("#circ-" + item["track"])
             .style("stroke", "black")
@@ -605,6 +609,8 @@ function getMusicList_billboard(startDate = "1965", endDate = "2016") {
             });
           })
           .on("mouseout", function() {
+            let isHistoClick = false;
+
             d3.select("#circ-" + item["track"])
               .style("stroke", "black")
               .style("stroke-width", "1")
@@ -637,62 +643,90 @@ function getMusicList_billboard(startDate = "1965", endDate = "2016") {
 
             // 2. tempo
             d3.selectAll(".tempo_bin1").each(function(d2) {
-              if (d3.select(this).attr("isClick") == "false")
+              if (d3.select(this).attr("isClick") == "false") {
                 if (item.tempo >= d2.x0 && item.tempo < d2.x1) {
                   d3.select(this).style("fill", "blue");
                 }
+              } else {
+                isHistoClick = true;
+              }
             });
 
             // 3. duration
             d3.selectAll(".duration_bin19").each(function(d2) {
-              if (d3.select(this).attr("isClick") == "false")
+              if (d3.select(this).attr("isClick") == "false") {
                 if (item.duration_ms >= d2.x0 && item.duration_ms < d2.x1) {
                   d3.select(this).style("fill", "blue");
                 }
+              } else {
+                isHistoClick = true;
+              }
             });
             //4. dancability
             d3.selectAll(".dancebility_bin7").each(function(d2) {
-              if (d3.select(this).attr("isClick") == "false")
+              if (d3.select(this).attr("isClick") == "false") {
                 if (item.dancebility >= d2.x0 && item.dancebility < d2.x1) {
                   d3.select(this).style("fill", "blue");
                 }
+              } else {
+                isHistoClick = true;
+              }
             });
 
             //5. energy
             d3.selectAll(".energy_bin1").each(function(d2) {
-              if (d3.select(this).attr("isClick") == "false")
+              if (d3.select(this).attr("isClick") == "false") {
                 if (item.energy >= d2.x0 && item.energy < d2.x1) {
                   d3.select(this).style("fill", "blue");
                 }
+              } else {
+                isHistoClick = true;
+              }
             });
             //6. acousticness
             d3.selectAll(".acousticness_bin5").each(function(d2) {
-              if (d3.select(this).attr("isClick") == "false")
+              if (d3.select(this).attr("isClick") == "false") {
                 if (item.acousticness >= d2.x0 && item.acousticness < d2.x1) {
                   d3.select(this).style("fill", "blue");
                 }
+              } else {
+                isHistoClick = true;
+              }
             });
             //7. speechness
             d3.selectAll(".speechiness_bin9").each(function(d2) {
-              if (d3.select(this).attr("isClick") == "false")
+              if (d3.select(this).attr("isClick") == "false") {
                 if (item.speechiness >= d2.x0 && item.speechiness < d2.x1) {
                   d3.select(this).style("fill", "blue");
                 }
+              } else {
+                isHistoClick = true;
+              }
             });
             //8. loudness
             d3.selectAll(".loudness_bin11").each(function(d2) {
-              if (d3.select(this).attr("isClick") == "false")
+              if (d3.select(this).attr("isClick") == "false") {
                 if (item.loudness >= d2.x0 && item.loudness < d2.x1) {
                   d3.select(this).style("fill", "blue");
                 }
+              } else {
+                isHistoClick = true;
+              }
             });
             //9. liveness
             d3.selectAll(".liveness_bin15").each(function(d2) {
-              if (d3.select(this).attr("isClick") == "false")
+              if (d3.select(this).attr("isClick") == "false") {
                 if (item.liveness >= d2.x0 && item.liveness < d2.x1) {
                   d3.select(this).style("fill", "blue");
                 }
+              } else {
+                isHistoClick = true;
+              }
             });
+
+            if (!isHistoClick) {
+              isOneHistoClicked = false;
+            }
           })
           .on("click", function() {
             window.open(
