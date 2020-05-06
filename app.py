@@ -32,9 +32,11 @@ def dashboard_main():
 def getAllMusic():
     # state is one of  "billboard" and "top50"
     state = request.args.get("state", 0).lower()
+    startDate = request.args.get("startDate", 0)
+    endDate = request.args.get("endDate", 0)
 
     if state == "billboard":
-        result = musicDBManager.getBillboard()
+        result = musicDBManager.getBillboard(startDate, endDate)
     else:
         result = musicDBManager.getTop50()
     # return json.result
@@ -47,8 +49,10 @@ def getAllFeatures_billboard():
     # state is one of  "billboard" and "top50"
 
     feature = request.args.get("feature", 0).lower()
+    startDate = request.args.get("startDate", 0).lower()
+    endDate = request.args.get("endDate", 0).lower()
 
-    result = musicDBManager.getFeatureData(feature)
+    result = musicDBManager.getFeatureData(feature, startDate, endDate)
 
     return dumps(result)
 
@@ -68,8 +72,10 @@ def getKeywords():
     state = request.args.get("state", 0).lower()
     result = None
     if state == "billboard":
+        startDate = request.args.get("startDate", 0).lower()
+        endDate = request.args.get("endDate", 0).lower()
         # timeRange = request.args.get("state", 0)
-        result = musicDBManager.getKeywords_billboard()
+        result = musicDBManager.getKeywords_billboard(startDate, endDate)
     else:
         result = musicDBManager.getKeywords_top50()
 

@@ -10,8 +10,8 @@ img_directory_path = "./static/img/"
 RANKTOP20 = [str(i) for i in range(1, 21)]
 
 
-def getBillboard():
-    result = getAllMusic_billboard()
+def getBillboard(startDate, endDate):
+    result = getAllMusic_billboard(startDate, endDate)
     # img_result = getAllImages()
 
     billboard_data = []
@@ -36,7 +36,7 @@ def getTop50():
     return top50_data
 
 
-def getAllMusic_billboard():
+def getAllMusic_billboard(startDate, endDate):
     # print(dataList)
 
     client = MongoClient(
@@ -44,7 +44,7 @@ def getAllMusic_billboard():
     db = client.MusicDB
     collection = db.billboardMusicCollection
 
-    isSuccess = collection.find({"rank": {"$in": RANKTOP20}}, {
+    isSuccess = collection.find({"rank": {"$in": RANKTOP20}, "releaseDate": {"$gte": startDate,  "$lt": endDate}}, {
                                 "_id": 0, "lyrics": 0, "image_url": 0}).sort("releaseDate", -1)
     return isSuccess
 
@@ -62,8 +62,8 @@ def getAllMusic_top50():
     return isSuccess
 
 
-def getFeatureData(feature):
-    billboard_feature = getFeatrue_billboard(feature)
+def getFeatureData(feature, startDate, endDate):
+    billboard_feature = getFeatrue_billboard(feature, startDate, endDate)
     top50_feature = getFeatrue_top50(feature)
 
     top50 = []
@@ -90,12 +90,12 @@ def getFeatrue_top50(feature):
     db = client.MusicDB
     collection = db.top50MusicCollection
 
-    isSuccess = collection.find({}, {"_id": 0, feature: 1})
+    isSuccess = collection.find({}, {"_id": 0, "track": 1, feature: 1})
 
     return isSuccess
 
 
-def getFeatrue_billboard(feature):
+def getFeatrue_billboard(feature, startDate, endDate):
     # print(dataList)
 
     client = MongoClient(
@@ -103,8 +103,8 @@ def getFeatrue_billboard(feature):
     db = client.MusicDB
     collection = db.billboardMusicCollection
 
-    isSuccess = collection.find({"rank": {"$in": RANKTOP20}}, {
-                                "_id":  0, feature: 1})
+    isSuccess = collection.find({"rank": {"$in": RANKTOP20}, "releaseDate": {"$gte": startDate,  "$lt": endDate}}, {
+                                "_id":  0, "track": 1, feature: 1})
     return isSuccess
 
 
@@ -132,13 +132,13 @@ def getKeywords():
     return keywrods_data
 
 
-def getKeywords_billboard():
+def getKeywords_billboard(startDate, endDate):
     client = MongoClient(
         "mongodb+srv://handy:ehddbs113@cluster0-siplm.mongodb.net/test?retryWrites=true&w=majority")
     db = client.MusicDB
     collection = db.billboardMusicCollection
 
-    isSuccess = collection.find({"rank": {"$in": RANKTOP20}}, {
+    isSuccess = collection.find({"rank": {"$in": RANKTOP20}, "releaseDate": {"$gte": startDate,  "$lt": endDate}}, {
                                 "_id":  0, "preprocessed_lyrice": 1})
     billboard_keywords = myNLProcessing.wordCloudDataProcessing_TFIDF(
         isSuccess)

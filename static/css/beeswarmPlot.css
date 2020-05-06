@@ -2,5 +2,6 @@
   fill: #bc53ff;
   /* fill-opacity: 0.6; */
   stroke: black;
+  stroke-width: 1px;
   cursor: pointer;
 }
