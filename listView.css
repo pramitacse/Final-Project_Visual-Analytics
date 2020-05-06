@@ -37,3 +37,55 @@ tbody::-webkit-scrollbar-thumb {
   border: 2px solid white; /* should match background, can't be transparent */
   background-color: rgba(0, 0, 0, 0.5);
 }
+td {
+  border-bottom: 1px solid #bbb;
+  padding: 2px 8px 0;
+  text-align: left;
+  font-size: 13px;
+}
+
+tbody::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+tbody::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+tbody::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+
+tbody:hover {
+  opacity: 0.5;
+}
+
+.py-md-1{
+background-color: #bc53ff}
+
+.listView-top50{
+  background: lightpink;
+}
+.col-md-6{
+background-color: deeppink
+}
+.navbar-toggler-icon{
+background: brown
+}
+.bg-primary{
+  background-color: gold;
+}
+
+.navbar{
+  background: crimson;
+}
+.btn{
+  background-color: #ff7b25;
+}
+.row{
+  color-adjust: initial;
+}
+.text-md-right{color-interpolation: linearRGB;
+}
+.navbar-dark{text-transform: full-width;
+}
