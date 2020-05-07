@@ -33,6 +33,14 @@ $.ajax({
       let table_row = d3
         .select("#table-content-top50")
         .append("tr")
+        .on("click", function() {
+          window.open(
+            "https://www.youtube.com/results?search_query=" +
+              item["track"].replace("_", " "),
+            "_blank"
+          );
+          // https://www.youtube.com/results?search_query=i%27m+englishman+in+new+york
+        })
         .on("mouseover", function() {
           //   d3.select("#circ-" + item["track"])
           //     .style("stroke", "#56C6D8")
